@@ -4,7 +4,7 @@ import 'package:fitme/src/constants/constants.dart';
 class BottomButton extends StatelessWidget {
 
   BottomButton( {required this.onTap, required this.buttonTitle});
-  final onTap;
+  final VoidCallback onTap;
   final String buttonTitle;
 
 
