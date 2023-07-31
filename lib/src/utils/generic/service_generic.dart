@@ -15,7 +15,7 @@ F extends ModelFactory<M>> {
   F createModelFactory();
 
   // TODO: REMOVE THIS. ONLY ADDED TEMP FOR TESTING
-  bool get doesNotHaveDataTag => false;
+  bool get doesNotHaveDataTag => true ;
   bool get listInsideDataTag => false;
   String get keyForData => 'data';
 
@@ -25,6 +25,8 @@ F extends ModelFactory<M>> {
     // throw CustomException.backStableError('hfiuewh');
     final repo = repoProvider;
     final response = await repo.getData();
+    print('#1');
+    print(response.toString());
     dynamic valueToPass;
     if (repo.isList || listInsideDataTag) {
       debugLog(DebugTags.apiResult, "red is $response");
@@ -47,7 +49,11 @@ F extends ModelFactory<M>> {
     final M temp;
     try {
       if (doesNotHaveDataTag) {
+        print('#2');
+        print(response.toString());
         temp = modelFactory.fromMap(response);
+        print('#3');
+        print(temp.toString());
       } else {
         temp = modelFactory.fromMap(response[keyForData]);
       }

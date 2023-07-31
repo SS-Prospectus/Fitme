@@ -10,6 +10,7 @@ class BmiController extends _$BmiController{
 
   Future<void> getData()async{
     state = const AsyncLoading();
+    print("a1234");
     state = await AsyncValue.guard(() => ref.read(bmiServiceProvider).getData());
   }
 }

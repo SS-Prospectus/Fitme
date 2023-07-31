@@ -6,7 +6,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'bmi_service.g.dart';
 
-class BmiService extends ServiceGeneric<Bmi, BmiRepo, ModelFactory<Bmi>>{
+class BmiService
+    extends ServiceGeneric<Bmi, BmiRepo, ModelFactory<Bmi>>{
   BmiService({required super.ref});
 
   @override

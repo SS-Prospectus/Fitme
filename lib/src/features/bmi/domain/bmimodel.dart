@@ -1,6 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:quiver/core.dart';
-import 'package:fitme/models/index.dart';
 import 'package:fitme/src/utils/generic/model_factory.dart';
 
 class BmiModelFactory extends ModelFactory<Bmi>{

@@ -7,6 +7,7 @@ import 'package:fitme/src/common widgets/bottom_button.dart';
 import 'package:fitme/src/constants/constants.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fitme/src/utils/provider/provider.dart';
+import 'package:fitme/src/features/bmi/presentation/bmi_controller.dart';
 
 class InputPage extends ConsumerStatefulWidget {
   @override
@@ -334,6 +335,7 @@ class _InputPageState extends ConsumerState<InputPage> {
               context.goNamed(
                 'result'
               );
+              // BmiController().getData();
               },
             buttonTitle: 'CALCULATE',
           )

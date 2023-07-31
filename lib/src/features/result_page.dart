@@ -1,3 +1,4 @@
+import 'package:fitme/src/features/bmi/data/bmi_repo.dart';
 import 'package:fitme/src/utils/provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:fitme/src/constants/constants.dart';
@@ -8,6 +9,7 @@ import 'package:go_router/go_router.dart';
 import 'package:fitme/src/features/bmi/presentation/bmi_controller.dart';
 import 'package:fitme/src/common widgets/async_value_widget.dart';
 import 'package:fitme/src/common widgets/nothing_to_show.dart';
+import '../../src/utils/generic/async_value_ui.dart';
 
 class ResultPage extends ConsumerStatefulWidget {
   @override
@@ -19,10 +21,22 @@ class _ResultPageState extends ConsumerState<ResultPage> {
   String? resultText;
   String? interpretation;
 
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      ref.watch(bmiControllerProvider.notifier).getData();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    final Bmi = ref.watch(bmiControllerProvider).value;
+    ref.listen(
+      bmiControllerProvider,
+          (_, state) => state.showAlertDialogOnError(context),
+    );
+
+    final Bmi = ref.watch(BmiStreamProvider).value;
     return Scaffold(
       appBar: AppBar(
         title: Text('BMI CALCULATOR'),
@@ -48,7 +62,7 @@ class _ResultPageState extends ConsumerState<ResultPage> {
                   data: (_) {
                     if (Bmi == null) {
                       return const CircularProgressIndicator();
-                    } else if (Bmi.isEmpty) {
+                    } else if (Bmi.data == {}) {
                       return const NothingToShow();
                     }
                     return Column(
@@ -61,7 +75,7 @@ class _ResultPageState extends ConsumerState<ResultPage> {
                               style: kBodyTextStyle,
                               textAlign: TextAlign.center,
                             ),
-                            Text(ref.watch(bmiprovider).toString(),
+                            Text(Bmi.data.bmi.toString(),
                               style: kResultTextStyle,
                             ),
                           ],
@@ -73,7 +87,7 @@ class _ResultPageState extends ConsumerState<ResultPage> {
                               style: kBodyTextStyle,
                               textAlign: TextAlign.center,
                             ),
-                            Text(ref.watch(bmiRangeProvider),
+                            Text(Bmi.data.healthyBmiRange,
                               style: kResultTextStyle,
                             ),
                           ],
@@ -81,11 +95,11 @@ class _ResultPageState extends ConsumerState<ResultPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Overall you are ",
+                            Text("Your health is ",
                               style: kBodyTextStyle,
                               textAlign: TextAlign.center,
                             ),
-                            Text(ref.watch(bmiComentProvider).toString(),
+                            Text(Bmi.data.health.toString(),
                               style: kBodyTextStyle,
                             ),
                           ],

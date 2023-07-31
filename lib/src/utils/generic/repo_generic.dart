@@ -86,6 +86,7 @@ abstract class RepoGeneric<T> {
 
   Future<Map> getMapData() async {
     debugLog("RepoGeneric A", completeUrl());
+    print('########');
     if (httpMethod == HttpMethod.get) {
       return httpProvider.get(completeUrl(), headers: await headers());
     } else if (httpMethod == HttpMethod.post) {
