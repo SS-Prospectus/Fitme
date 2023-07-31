@@ -1,0 +1,9 @@
+{
+  "status_code": 200,
+  "request_result": "Successful",
+  "data": {
+    "bmi": 24.69,
+    "health": "Normal",
+    "healthy_bmi_range": "18.5 - 25"
+  }
+}

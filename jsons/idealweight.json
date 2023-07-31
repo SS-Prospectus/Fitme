@@ -1,0 +1,10 @@
+{
+  "status_code": 200,
+  "request_result": "Successful",
+  "data": {
+    "Hamwi": 77.34,
+    "Devine": 75.53,
+    "Miller": 71.85,
+    "Robinson": 73.09
+  }
+}

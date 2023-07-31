@@ -5,7 +5,7 @@ import 'package:fitme/src/utils/provider/provider.dart';
 
 part 'bmi_repo.g.dart';
 
-class BmiRepo extends RepoGeneric<List<Bmi>?> {
+class BmiRepo extends RepoGeneric<Bmi?> {
   BmiRepo({required super.ref});
 
   @override

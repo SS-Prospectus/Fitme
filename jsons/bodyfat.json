@@ -1,0 +1,11 @@
+{
+  "status_code": 200,
+  "request_result": "Successful",
+  "data": {
+    "Body Fat (U.S. Navy Method)": 15.65,
+    "Body Fat Category": "Fitness",
+    "Body Fat Mass": 10.96,
+    "Lean Body Mass": 59.04,
+    "Body Fat (BMI method)": 16.06
+  }
+}
